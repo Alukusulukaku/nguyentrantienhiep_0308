@@ -310,7 +310,7 @@ article:after,
 }
 
 .bg-light-orange {
-  background-color: #ffdcb0;
+  background-color: #fce7ce;
 }
 
 .bg-light-green {
@@ -694,7 +694,7 @@ p:last-child {
 .footer-bottom {
   padding-top: 20px;
   padding-bottom: 20px;
-  border-top: 1px solid #1a3286;
+  border-top: 1px solid #901616;
 }
 
 .footer-copyright {
@@ -1562,7 +1562,7 @@ body {
 
 .slider-home-banner .carousel-item img {
   width: 100%;
-  height: 375px;
+  height: 777px;
   -o-object-fit: cover;
   object-fit: cover;
 }
@@ -1632,7 +1632,7 @@ body {
 }
 
 .section-subscribe {
-  background-color: #162a70;
+  background-color: #fff;
 }
 
 /* ================== PAGE DETAILS ==================  */

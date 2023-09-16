@@ -148,10 +148,6 @@ const Detail = () => (
                     <i className="fas fa-shopping-cart" />{" "}
                     <span className="text">Add to cart</span>
                   </a>
-                  <a href="#" className="btn btn-light">
-                    <i className="fas fa-envelope" />{" "}
-                    <span className="text">Contact supplier</span>
-                  </a>
                 </div>{" "}
                 {/* col.// */}
               </div>{" "}
@@ -190,153 +186,127 @@ const Detail = () => (
               <li>Open base for pots and pans</li>
               <li>On request available in propane execution</li>
             </ul>
-            <h5 className="title-description">Specifications</h5>
-            <table className="table table-bordered">
-              <tbody>
-                <tr>
-                  {" "}
-                  <th colSpan={2}>Basic specs</th>{" "}
-                </tr>
-                <tr>
-                  {" "}
-                  <td>Type of energy</td>
-                  <td>Lava stone</td>{" "}
-                </tr>
-                <tr>
-                  {" "}
-                  <td>Number of zones</td>
-                  <td>2</td>{" "}
-                </tr>
-                <tr>
-                  {" "}
-                  <td>Automatic connection </td>{" "}
-                  <td>
-                    {" "}
-                    <i className="fa fa-check text-success" /> Yes{" "}
-                  </td>
-                </tr>
-                <tr>
-                  {" "}
-                  <th colSpan={2}>Dimensions</th>{" "}
-                </tr>
-                <tr>
-                  {" "}
-                  <td>Width</td>
-                  <td>500mm</td>{" "}
-                </tr>
-                <tr>
-                  {" "}
-                  <td>Depth</td>
-                  <td>400mm</td>{" "}
-                </tr>
-                <tr>
-                  {" "}
-                  <td>Height </td>
-                  <td>700mm</td>{" "}
-                </tr>
-                <tr>
-                  {" "}
-                  <th colSpan={2}>Materials</th>{" "}
-                </tr>
-                <tr>
-                  {" "}
-                  <td>Exterior</td>
-                  <td>Stainless steel</td>{" "}
-                </tr>
-                <tr>
-                  {" "}
-                  <td>Interior</td>
-                  <td>Iron</td>{" "}
-                </tr>
-                <tr>
-                  {" "}
-                  <th colSpan={2}>Connections</th>{" "}
-                </tr>
-                <tr>
-                  {" "}
-                  <td>Heating Type</td>
-                  <td>Gas</td>{" "}
-                </tr>
-                <tr>
-                  {" "}
-                  <td>Connected load gas</td>
-                  <td>15 Kw</td>{" "}
-                </tr>
-              </tbody>
-            </table>
           </div>{" "}
-          {/* col.// */}
-          <aside className="col-md-4">
-            <div className="box">
-              <h5 className="title-description">Files</h5>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-              <h5 className="title-description">Videos</h5>
-              <article className="media mb-3">
-                <a href="#">
-                  <img
-                    className="img-sm mr-3"
-                    src={require("../../assets/images/posts/3.jpg")}
-                  />
-                </a>
-                <div className="media-body">
-                  <h6 className="mt-0">
-                    <a href="#">How to use this item</a>
-                  </h6>
-                  <p className="mb-2">
-                    {" "}
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-                    scelerisque ante sollicitudin{" "}
-                  </p>
-                </div>
-              </article>
-              <article className="media mb-3">
-                <a href="#">
-                  <img
-                    className="img-sm mr-3"
-                    src={require("../../assets/images/posts/2.jpg")}
-                  />
-                </a>
-                <div className="media-body">
-                  <h6 className="mt-0">
-                    <a href="#">New tips and tricks</a>
-                  </h6>
-                  <p className="mb-2">
-                    {" "}
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-                    scelerisque ante sollicitudin{" "}
-                  </p>
-                </div>
-              </article>
-              <article className="media mb-3">
-                <a href="#">
-                  <img
-                    className="img-sm mr-3"
-                    src={require("../../assets/images/posts/1.jpg")}
-                  />
-                </a>
-                <div className="media-body">
-                  <h6 className="mt-0">
-                    <a href="#">New tips and tricks</a>
-                  </h6>
-                  <p className="mb-2">
-                    {" "}
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-                    scelerisque ante sollicitudin{" "}
-                  </p>
-                </div>
-              </article>
-            </div>{" "}
-            {/* box.// */}
-          </aside>{" "}
-          {/* col.// */}
+          <div className="container">
+            <section className="padding-bottom-sm">
+              <header className="section-heading heading-line">
+                <h4 className="title-section text-uppercase">
+                  Maybe you like these products
+                </h4>
+              </header>
+              <div className="row row-sm">
+                <div className="col-xl-2 col-lg-3 col-md-4 col-6 products">
+                  <div className="card card-sm card-product-grid">
+                    <a href="/product-detail/6" className="img-wrap">
+                      {" "}
+                      <img
+                        src={require("../../assets/images/items/1.jpg")}
+                      />{" "}
+                    </a>
+                    <figcaption className="info-wrap">
+                      <a href="#" className="title">
+                        Just another product name
+                      </a>
+                      <div className="price mt-1">$179.00</div>{" "}
+                      {/* price-wrap.// */}
+                    </figcaption>
+                  </div>
+                </div>{" "}
+                {/* col.// */}
+                <div className="col-xl-2 col-lg-3 col-md-4 col-6">
+                  <div className="card card-sm card-product-grid">
+                    <a href="#" className="img-wrap">
+                      {" "}
+                      <img
+                        src={require("../../assets/images/items/2.jpg")}
+                      />{" "}
+                    </a>
+                    <figcaption className="info-wrap">
+                      <a href="#" className="title">
+                        Some item name here
+                      </a>
+                      <div className="price mt-1">$280.00</div>{" "}
+                      {/* price-wrap.// */}
+                    </figcaption>
+                  </div>
+                </div>{" "}
+                {/* col.// */}
+                <div className="col-xl-2 col-lg-3 col-md-4 col-6">
+                  <div className="card card-sm card-product-grid">
+                    <a href="#" className="img-wrap">
+                      {" "}
+                      <img
+                        src={require("../../assets/images/items/3.jpg")}
+                      />{" "}
+                    </a>
+                    <figcaption className="info-wrap">
+                      <a href="#" className="title">
+                        Great product name here
+                      </a>
+                      <div className="price mt-1">$56.00</div>{" "}
+                      {/* price-wrap.// */}
+                    </figcaption>
+                  </div>
+                </div>{" "}
+                {/* col.// */}
+                <div className="col-xl-2 col-lg-3 col-md-4 col-6">
+                  <div className="card card-sm card-product-grid">
+                    <a href="#" className="img-wrap">
+                      {" "}
+                      <img
+                        src={require("../../assets/images/items/4.jpg")}
+                      />{" "}
+                    </a>
+                    <figcaption className="info-wrap">
+                      <a href="#" className="title">
+                        Just another product name
+                      </a>
+                      <div className="price mt-1">$179.00</div>{" "}
+                      {/* price-wrap.// */}
+                    </figcaption>
+                  </div>
+                </div>{" "}
+                {/* col.// */}
+                <div className="col-xl-2 col-lg-3 col-md-4 col-6">
+                  <div className="card card-sm card-product-grid">
+                    <a href="#" className="img-wrap">
+                      {" "}
+                      <img
+                        src={require("../../assets/images/items/5.jpg")}
+                      />{" "}
+                    </a>
+                    <figcaption className="info-wrap">
+                      <a href="#" className="title">
+                        Just another product name
+                      </a>
+                      <div className="price mt-1">$179.00</div>{" "}
+                      {/* price-wrap.// */}
+                    </figcaption>
+                  </div>
+                </div>{" "}
+                {/* col.// */}
+                <div className="col-xl-2 col-lg-3 col-md-4 col-6">
+                  <div className="card card-sm card-product-grid">
+                    <a href="#" className="img-wrap">
+                      {" "}
+                      <img
+                        src={require("../../assets/images/items/6.jpg")}
+                      />{" "}
+                    </a>
+                    <figcaption className="info-wrap">
+                      <a href="#" className="title">
+                        Some item name here
+                      </a>
+                      <div className="price mt-1">$280.00</div>{" "}
+                      {/* price-wrap.// */}
+                    </figcaption>
+                  </div>
+                </div>{" "}
+              </div>{" "}
+              {/* row.// */}
+            </section>
+          </div>
+          {/* col.// */} {/* col.// */}
         </div>{" "}
         {/* row.// */}
       </div>{" "}

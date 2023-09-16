@@ -143,53 +143,7 @@ const CategoryGridView = () => (
               {/* inner.// */}
             </div>
           </article>{" "}
-          {/* filter-group .// */}
-          <article className="filter-group">
-            <h6 className="title">
-              <a
-                href="#"
-                className="dropdown-toggle"
-                data-toggle="collapse"
-                data-target="#collapse_3"
-              >
-                {" "}
-                Price range{" "}
-              </a>
-            </h6>
-            <div className="filter-content collapse show" id="collapse_3">
-              <div className="inner">
-                <input
-                  type="range"
-                  className="custom-range"
-                  min={0}
-                  max={100}
-                  name=""
-                />
-                <div className="form-row">
-                  <div className="form-group col-md-6">
-                    <label>Min</label>
-                    <input
-                      className="form-control"
-                      placeholder="$0"
-                      type="number"
-                    />
-                  </div>
-                  <div className="form-group text-right col-md-6">
-                    <label>Max</label>
-                    <input
-                      className="form-control"
-                      placeholder="$1,0000"
-                      type="number"
-                    />
-                  </div>
-                </div>{" "}
-                {/* form-row.// */}
-                <button className="btn btn-block btn-primary">Apply</button>
-              </div>{" "}
-              {/* inner.// */}
-            </div>
-          </article>{" "}
-          {/* filter-group .// */}
+          {/* filter-group .// */} {/* filter-group .// */}
           <article className="filter-group">
             <h6 className="title">
               <a
@@ -224,59 +178,7 @@ const CategoryGridView = () => (
               {/* inner.// */}
             </div>
           </article>{" "}
-          {/* filter-group .// */}
-          <article className="filter-group">
-            <h6 className="title">
-              <a
-                href="#"
-                className="dropdown-toggle"
-                data-toggle="collapse"
-                data-target="#collapse_5"
-              >
-                {" "}
-                Condition{" "}
-              </a>
-            </h6>
-            <div className="filter-content collapse show" id="collapse_5">
-              <div className="inner">
-                <label className="custom-control custom-radio">
-                  <input
-                    type="radio"
-                    name="myfilter_radio"
-                    defaultChecked=""
-                    className="custom-control-input"
-                  />
-                  <div className="custom-control-label">Any condition</div>
-                </label>
-                <label className="custom-control custom-radio">
-                  <input
-                    type="radio"
-                    name="myfilter_radio"
-                    className="custom-control-input"
-                  />
-                  <div className="custom-control-label">Brand new </div>
-                </label>
-                <label className="custom-control custom-radio">
-                  <input
-                    type="radio"
-                    name="myfilter_radio"
-                    className="custom-control-input"
-                  />
-                  <div className="custom-control-label">Used items</div>
-                </label>
-                <label className="custom-control custom-radio">
-                  <input
-                    type="radio"
-                    name="myfilter_radio"
-                    className="custom-control-input"
-                  />
-                  <div className="custom-control-label">Very old</div>
-                </label>
-              </div>{" "}
-              {/* inner.// */}
-            </div>
-          </article>{" "}
-          {/* filter-group .// */}
+          {/* filter-group .// */} {/* filter-group .// */}
         </aside>{" "}
         {/* col.// */}
         <main className="col-md-10">

@@ -2,7 +2,7 @@ import React from "react";
 const Subscribe = () => (
   <section className="section-subscribe padding-y-lg">
     <div className="container">
-      <p className="pb-2 text-center text-white">
+      <p className="pb-2 text-center text-black-50">
         Delivering the latest product trends and industry news straight to your
         inbox
       </p>
@@ -25,7 +25,7 @@ const Subscribe = () => (
             </div>{" "}
             {/* col.// */}
           </form>
-          <small className="form-text text-white-50">
+          <small className="form-text text-black-50">
             We’ll never share your email address with a third-party.{" "}
           </small>
         </div>{" "}
