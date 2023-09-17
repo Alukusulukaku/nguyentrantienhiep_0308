@@ -35,39 +35,14 @@ class Footer extends Component {
                     <a href="#">About us</a>
                   </li>
                   <li>
-                    <a href="#">Career</a>
-                  </li>
-                  <li>
-                    <a href="#">Find a store</a>
+                    <a href="#">Contact us</a>
                   </li>
                   <li>
                     <a href="#">Rules and terms</a>
                   </li>
-                  <li>
-                    <a href="#">Sitemap</a>
-                  </li>
                 </ul>
               </aside>
-              <aside className="col-md col-6">
-                <h6 className="title">Help</h6>
-                <ul className="list-unstyled">
-                  <li>
-                    <a href="#">Contact us</a>
-                  </li>
-                  <li>
-                    <a href="#">Money refund</a>
-                  </li>
-                  <li>
-                    <a href="#">Order status</a>
-                  </li>
-                  <li>
-                    <a href="#">Shipping info</a>
-                  </li>
-                  <li>
-                    <a href="#">Open dispute</a>
-                  </li>
-                </ul>
-              </aside>
+
               <aside className="col-md col-6">
                 <h6 className="title">Account</h6>
                 <ul className="list-unstyled">

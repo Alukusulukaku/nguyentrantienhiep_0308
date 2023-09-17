@@ -70,3 +70,16 @@
     transform: translate(0px, 0px);
   }
 }
+.slider-text {
+  text-shadow: 2px 2px #434343;
+}
+.slider-description {
+  text-shadow: 2px 2px #414141;
+  font-weight: bold;
+}
+.slider-image {
+  filter: brightness(85%);
+}
+.slider-home-banner {
+  overflow-x: hidden;
+}
