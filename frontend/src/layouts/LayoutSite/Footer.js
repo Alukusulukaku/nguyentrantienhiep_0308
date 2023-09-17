@@ -120,7 +120,7 @@ class Footer extends Component {
               Guide
             </p>
             <p className="text-muted">
-              © 2019 Company name, All rights reserved
+              © 2023 Nguyen Tran Tien Hiep, All rights reserved
             </p>
             <br />
           </section>

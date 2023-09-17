@@ -188,8 +188,8 @@ const Items = () => (
         </div>{" "}
         {/* col.// */}
       </div>{" "}
-      <div class="col-md-12 text-center">
-        <button type="submit" class="btn btn-block btn-warning">
+      <div class="col-md-12 d-flex justify-content-center">
+        <button type="submit" class="btn btn-block btn-warning w-50">
           {" "}
           <i class="fa fa-plus"></i> More...{" "}
         </button>
