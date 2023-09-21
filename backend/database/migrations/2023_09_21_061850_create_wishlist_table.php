@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('db_wishlist_img', function (Blueprint $table) {
+        Schema::create('db_wishlist', function (Blueprint $table) {
             $table->id();
             $table->unsignedTinyInteger('user_id');
             $table->unsignedTinyInteger('product_id');

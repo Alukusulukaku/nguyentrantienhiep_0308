@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name',1000);
             $table->string('path',1000);
+            $table->unsignedInteger('parent_id')->default(0);
             $table->timestamps();
             $table->unsignedInteger('created_by')->default(0);
             $table->unsignedInteger('updated_by')->nullable();

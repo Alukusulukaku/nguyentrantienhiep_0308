@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('db_order', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('user_id');
             $table->string('name');
             $table->string('phone');
             $table->string('email');
