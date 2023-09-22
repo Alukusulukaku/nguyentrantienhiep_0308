@@ -160,7 +160,7 @@ Route::prefix('user')->group(function(){
 /*----------------------*/
 /* Wishlist */
 
-Route::prefix('user')->group(function(){
+Route::prefix('wishlist')->group(function(){
     Route::get('index', [WishlistController::class, 'index']);
     Route::get('show/{id}', [WishlistController::class, 'show']);
     Route::post('store', [WishlistController::class, 'store']);
@@ -175,5 +175,6 @@ Route::get('product_category/{category_id}/{limit}/{page?}', [ProductController:
 Route::get('product_brand/{brand_id}/{limit}/{page?}', [ProductController::class, 'product_brand']);
 Route::get('getLatestProduct/{limit}/{status?}', [ProductController::class, 'getLatestProduct']);
 
+/*---------------------*/
 /* Slider */
 Route::get('getSliderByPosition/{position}/{status?}', [SliderController::class, 'getSliderByPosition']);

@@ -10,6 +10,7 @@ class OrderDetail extends Model
 {
     use HasFactory;
     protected $table='db_orderdetail';
+    public $timestamps = false;
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
@@ -18,4 +19,5 @@ class OrderDetail extends Model
     {
         return $this->belongsTo(Order::class);
     }
+    
 }
