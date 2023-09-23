@@ -1,12 +1,12 @@
-import Slider from "../../pages/home/Slider";
-import Deal from "../../pages/home/Deal";
+import Slider from "../../pages/frontend/home/Slider";
+import Deal from "../../pages/frontend/home/Deal";
 import React from "react";
-import SuggestedCategories from "../../pages/home/SuggestedCategories";
-import Items from "../../pages/home/Items";
-import News from "../../pages/home/News";
-import Subscribe from "../../pages/home/Subscribe";
+import SuggestedCategories from "../../pages/frontend/home/SuggestedCategories";
+import Items from "../../pages/frontend/home/Items";
+import News from "../../pages/frontend/home/News";
+import Subscribe from "../../pages/frontend/home/Subscribe";
 
-function Home(props) {
+function Home() {
   return (
     <>
       <div>

@@ -10,6 +10,7 @@
       content="Web site created using create-react-app"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -94,6 +95,7 @@
       });
       // jquery end
     </script>
+
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
     <!--
@@ -121,5 +123,23 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      $(document).ready(function () {
+        $('button[data-collapse-toggle="dropdown-example"]').click(function () {
+          $("#dropdown-example").toggle();
+        });
+      });
+      $(document).ready(function () {
+        $('button[data-drawer-toggle="separator-sidebar"]').click(function () {
+          $("aside").toggleClass("-tw-translate-x-full");
+          $(".overlay").toggle();
+        });
+
+        $(".overlay").click(function () {
+          $("aside").toggleClass("-tw-translate-x-full");
+          $(".overlay").toggle();
+        });
+      });
+    </script>
   </body>
 </html>

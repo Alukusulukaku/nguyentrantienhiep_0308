@@ -1,8 +1,22 @@
-.dropdown:hover {
-  .dropdown-large {
-    display: block;
-  }
-  .dropdown-large:hover {
-    display: block;
-  }
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  vertical-align: middle;
+}
+img,
+video {
+  max-width: 100%;
+  height: auto;
 }

@@ -1,17 +1,14 @@
 import { Outlet } from "react-router-dom";
-import Header from "../LayoutSite/Header";
-import Footer from "../LayoutSite/Footer";
+import Header from "../LayoutAdmin/Header";
+import Footer from "../LayoutAdmin/Footer";
+import "../../assets/backend/css/styles.css";
+import "../../assets/css/test.css";
 
 function LayoutAdmin() {
   return (
     <>
       <Header />
-      <section className="maincontent">
-        <div className="container-fluid" style={{ paddingBottom: 10 }}>
-          <Outlet />
-        </div>
-      </section>
-      <Footer />
+      <Outlet />
     </>
   );
 }

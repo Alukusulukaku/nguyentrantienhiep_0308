@@ -1,13 +1,10 @@
-import { useRef } from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 function Header() {
   const [sticky, setSticky] = useState(false);
-  const dropdownRef = useRef(null);
   useEffect(() => {
     const handleScroll = () => {
       setSticky(window.scrollY >= 200);
-      console.log(window.scrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
