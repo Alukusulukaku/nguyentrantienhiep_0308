@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedTinyInteger('user_id');
             $table->unsignedTinyInteger('product_id');
-            $table->timestamps();
         });
     }
 

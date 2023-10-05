@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import menuservice from "../../services/MenuService";
+import Submenu from "../../components/frontend/Submenu";
 function Header() {
   const [sticky, setSticky] = useState(false);
+  const [menus, setMenus] = useState([]);
   useEffect(() => {
     const handleScroll = () => {
       setSticky(window.scrollY >= 200);
@@ -11,6 +14,16 @@ function Header() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+  }, []);
+  useEffect(function () {
+    const delayDebounceFn = setTimeout(() => {
+      async function fetchItems() {
+        const result = await menuservice.getMenus();
+        setMenus(result.data.data);
+      }
+      fetchItems();
+    }, 100);
+    return () => clearTimeout(delayDebounceFn);
   }, []);
   return (
     <>
@@ -95,196 +108,52 @@ function Header() {
           </button>
           <div className="collapse navbar-collapse" id="main_nav">
             <ul className="navbar-nav">
-              <li className="nav-item dropdown">
-                <Link
-                  className="nav-link dropdown-toggle"
-                  data-toggle="dropdown"
-                  to="#"
-                >
-                  Men
-                </Link>
-                <div className={`dropdown-menu dropdown-large `}>
-                  <nav className="row">
-                    <div className="col-6">
-                      <Link to="page-index-1.html">Home page 1</Link>
-                      <Link to="page-index-2.html">Home page 2</Link>
-                      <Link to="page-category.html">All category</Link>
-                      <Link to="page-listing-large.html">Listing list</Link>
-                      <Link to="page-listing-grid.html">Listing grid</Link>
-                      <Link to="page-shopping-cart.html">Shopping cart</Link>
-                      <Link to="page-detail-product.html">Product detail</Link>
-                      <Link to="/content">Page content</Link>
-                      <Link to="/login">Page login</Link>
-                      <Link to="/register">Page register</Link>
-                    </div>
-                    <div className="col-6">
-                      <Link to="page-profile-main.html">Profile main</Link>
-                      <Link to="page-profile-orders.html">Profile orders</Link>
-                      <Link to="page-profile-seller.html">Profile seller</Link>
-                      <Link to="page-profile-wishlist.html">
-                        Profile wishlist
+              {menus.map((item, index) => {
+                if (item.parent_id === 0 && item.children.length !== 0) {
+                  return (
+                    <li className="nav-item dropdown" key={index}>
+                      <Link
+                        className="nav-link dropdown-toggle"
+                        data-toggle="dropdown"
+                        to={item.path}
+                      >
+                        {item.name}
                       </Link>
-                      <Link to="page-profile-setting.html">
-                        Profile setting
+                      <div className={`dropdown-menu dropdown-large `}>
+                        <div className="row bg-white rounded-0 m-0 shadow-sm">
+                          <div className="col-lg-7 col-xl-8">
+                            <div className="p-4">
+                              <div className="row">
+                                <div className="col-lg-12 d-flex flex-wrap mb-4">
+                                  <ul className="list-unstyled">
+                                    <Submenu children={item.children} />
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/*  row end .// */}
+                      </div>
+                      {/*  dropdown-menu dropdown-large end.// */}
+                    </li>
+                  );
+                } else if (item.parent_id === 0 && item.children.length === 0) {
+                  return (
+                    <li className="nav-item">
+                      <Link
+                        to={item.path}
+                        className="nav-link text-small pb-0 "
+                      >
+                        {item.name}
                       </Link>
-                      <Link to="page-profile-address.html">
-                        Profile address
-                      </Link>
-                      <Link to="rtl-page-index-1.html">RTL home page</Link>
-                      <Link to="page-components.html" target="_blank">
-                        More components
-                      </Link>
-                    </div>
-                  </nav>
-                  {/*  row end .// */}
-                </div>
-                {/*  dropdown-menu dropdown-large end.// */}
-              </li>
-              <li className="nav-item dropdown">
-                <Link
-                  className="nav-link dropdown-toggle"
-                  data-toggle="dropdown"
-                  to="#"
-                >
-                  Women
-                </Link>
-                <div className={`dropdown-menu dropdown-large `}>
-                  <nav className="row">
-                    <div className="col-6">
-                      <Link to="page-index-1.html">Home page 1</Link>
-                      <Link to="page-index-2.html">Home page 2</Link>
-                      <Link to="page-category.html">All category</Link>
-                      <Link to="page-listing-large.html">Listing list</Link>
-                      <Link to="page-listing-grid.html">Listing grid</Link>
-                      <Link to="page-shopping-cart.html">Shopping cart</Link>
-                      <Link to="page-detail-product.html">Product detail</Link>
-                      <Link to="/content">Page content</Link>
-                      <Link to="/login">Page login</Link>
-                      <Link to="/register">Page register</Link>
-                    </div>
-                    <div className="col-6">
-                      <Link to="page-profile-main.html">Profile main</Link>
-                      <Link to="page-profile-orders.html">Profile orders</Link>
-                      <Link to="page-profile-seller.html">Profile seller</Link>
-                      <Link to="page-profile-wishlist.html">
-                        Profile wishlist
-                      </Link>
-                      <Link to="page-profile-setting.html">
-                        Profile setting
-                      </Link>
-                      <Link to="page-profile-address.html">
-                        Profile address
-                      </Link>
-                      <Link to="rtl-page-index-1.html">RTL home page</Link>
-                      <Link to="page-components.html" target="_blank">
-                        More components
-                      </Link>
-                    </div>
-                  </nav>
-                  {/*  row end .// */}
-                </div>
-                {/*  dropdown-menu dropdown-large end.// */}
-              </li>
-              <li className="nav-item dropdown">
-                <Link
-                  className="nav-link dropdown-toggle"
-                  data-toggle="dropdown"
-                  to="#"
-                >
-                  Bags & Gears
-                </Link>
-                <div className={`dropdown-menu dropdown-large `}>
-                  <nav className="row">
-                    <div className="col-6">
-                      <Link to="page-index-1.html">Home page 1</Link>
-                      <Link to="page-index-2.html">Home page 2</Link>
-                      <Link to="page-category.html">All category</Link>
-                      <Link to="page-listing-large.html">Listing list</Link>
-                      <Link to="page-listing-grid.html">Listing grid</Link>
-                      <Link to="page-shopping-cart.html">Shopping cart</Link>
-                      <Link to="page-detail-product.html">Product detail</Link>
-                      <Link to="/content">Page content</Link>
-                      <Link to="/login">Page login</Link>
-                      <Link to="/register">Page register</Link>
-                    </div>
-                    <div className="col-6">
-                      <Link to="page-profile-main.html">Profile main</Link>
-                      <Link to="page-profile-orders.html">Profile orders</Link>
-                      <Link to="page-profile-seller.html">Profile seller</Link>
-                      <Link to="page-profile-wishlist.html">
-                        Profile wishlist
-                      </Link>
-                      <Link to="page-profile-setting.html">
-                        Profile setting
-                      </Link>
-                      <Link to="page-profile-address.html">
-                        Profile address
-                      </Link>
-                      <Link to="rtl-page-index-1.html">RTL home page</Link>
-                      <Link to="page-components.html" target="_blank">
-                        More components
-                      </Link>
-                    </div>
-                  </nav>
-                  {/*  row end .// */}
-                </div>
-                {/*  dropdown-menu dropdown-large end.// */}
-              </li>
-              <li className="nav-item dropdown">
-                <Link
-                  className="nav-link dropdown-toggle"
-                  data-toggle="dropdown"
-                  to="#"
-                >
-                  Kids
-                </Link>
-                <div className={`dropdown-menu dropdown-large `}>
-                  <nav className="row">
-                    <div className="col-6">
-                      <Link to="page-index-1.html">Home page 1</Link>
-                      <Link to="page-index-2.html">Home page 2</Link>
-                      <Link to="page-category.html">All category</Link>
-                      <Link to="page-listing-large.html">Listing list</Link>
-                      <Link to="page-listing-grid.html">Listing grid</Link>
-                      <Link to="page-shopping-cart.html">Shopping cart</Link>
-                      <Link to="page-detail-product.html">Product detail</Link>
-                      <Link to="/content">Page content</Link>
-                      <Link to="/login">Page login</Link>
-                      <Link to="/register">Page register</Link>
-                    </div>
-                    <div className="col-6">
-                      <Link to="page-profile-main.html">Profile main</Link>
-                      <Link to="page-profile-orders.html">Profile orders</Link>
-                      <Link to="page-profile-seller.html">Profile seller</Link>
-                      <Link to="page-profile-wishlist.html">
-                        Profile wishlist
-                      </Link>
-                      <Link to="page-profile-setting.html">
-                        Profile setting
-                      </Link>
-                      <Link to="page-profile-address.html">
-                        Profile address
-                      </Link>
-                      <Link to="rtl-page-index-1.html">RTL home page</Link>
-                      <Link to="page-components.html" target="_blank">
-                        More components
-                      </Link>
-                    </div>
-                  </nav>
-                  {/*  row end .// */}
-                </div>
-                {/*  dropdown-menu dropdown-large end.// */}
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="#">
-                  News
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="#">
-                  Contact us
-                </Link>
-              </li>
+                    </li>
+                  );
+                } else {
+                  return "";
+                }
+              })}
             </ul>
             <ul className="navbar-nav ml-md-auto">
               <li className="nav-item dropdown">

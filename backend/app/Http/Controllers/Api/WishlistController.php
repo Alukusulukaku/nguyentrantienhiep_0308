@@ -16,4 +16,34 @@ class WishlistController extends Controller
             200
         );
     }
+    public function show($id){
+        $data = Wishlist::find($id);
+        return response()->json(['success' => true, 'message' => 'Thành công', 'data' => $data],
+        200);
+    }
+    public function store(Request $request){
+        $wishlist = new Wishlist();
+        $wishlist->user()->associate($request->user_id);
+        $wishlist->product()->associate($request->product_id);
+        $wishlist->save();
+        return response()->json(
+            ['success' => true, 'message' => 'Thành công', 'data' => $wishlist],
+            201
+        );
+    }
+    public function destroy($id)
+    {
+        $post=Wishlist::find($id);
+        if($post==null){
+            return response()->json(
+                ['success' => false, 'message' => 'Xóa dữ liệu không thành công', 'data' => null],
+                404
+            );
+        }
+        $post->delete();
+        return response()->json(
+            ['success' => true, 'message' => 'Thành công', 'data' => $post],
+            200
+        );
+    }
 }

@@ -17,3 +17,8 @@
 - Tuần 4 (Từ 28/9/2023 - 05/10/2023): Tiếp tục hoàn thành các chức năng còn lại của backend.
 
 - Tuần 5 (Từ 05/10/2023 - 12/10/2023): Load dữ liệu lên backend và frontend.
+
+### Lưu ý
+
+- Folder backend nên đổi tên thành fjallraven_db để có thể lấy được dữ liệu.
+- Hoặc đổi nội dung file httpAxios có chỗ fjallraven_db thành tên folder laravel.

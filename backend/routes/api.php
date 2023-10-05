@@ -33,7 +33,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 /* Brands */
 
 Route::prefix('brand')->group(function(){
-    Route::get('index', [BrandController::class, 'index']);
+    Route::get('index/{status}/{limit}/{page?}', [BrandController::class, 'index']);
+    Route::get('getAll', [BrandController::class, 'getAll']);
     Route::get('show/{id}', [BrandController::class, 'show']);
     Route::post('store', [BrandController::class, 'store']);
     Route::post('update/{id}', [BrandController::class, 'update']);
@@ -44,7 +45,7 @@ Route::prefix('brand')->group(function(){
 /* Cart */
 
 Route::prefix('cart')->group(function(){
-    Route::get('index', [CartController::class, 'index']);
+    Route::get('index/', [CartController::class, 'index']);
     Route::get('show/{id}', [CartController::class, 'show']);
     Route::post('store', [CartController::class, 'store']);
     Route::post('update/{id}', [CartController::class, 'update']);
@@ -55,7 +56,8 @@ Route::prefix('cart')->group(function(){
 /* Category */
 
 Route::prefix('category')->group(function(){
-    Route::get('index', [CategoryController::class, 'index']);
+    Route::get('index/{limit}/{page?}', [CategoryController::class, 'index']);
+    Route::get('all', [CategoryController::class, 'getAll']);
     Route::get('show/{id}', [CategoryController::class, 'show']);
     Route::get('getBySlug/{slug}', [CategoryController::class, 'getBySlug']);
     Route::post('store', [CategoryController::class, 'store']);
@@ -69,7 +71,7 @@ Route::prefix('category')->group(function(){
 /* Contact */
 
 Route::prefix('contact')->group(function(){
-    Route::get('index', [ContactController::class, 'index']);
+    Route::get('index/{limit}/{page?}', [ContactController::class, 'index']);
     Route::get('show/{id}', [ContactController::class, 'show']);
     Route::post('store', [ContactController::class, 'store']);
     Route::post('update/{id}', [ContactController::class, 'update']);
@@ -81,7 +83,9 @@ Route::prefix('contact')->group(function(){
 /* Menu */
 
 Route::prefix('menu')->group(function(){
-    Route::get('index', [MenuController::class, 'index']);
+    Route::get('index/{limit}/{page?}', [MenuController::class, 'index']);
+    Route::get('all', [MenuController::class, 'all']);
+
     Route::get('getMenu/{type}/{status?}', [MenuController::class, 'getMenu']);
     Route::get('getMenuByParentID/{table_id}/{type}/{status?}', [MenuController::class, 'getMenuByParentID']);
     Route::get('show/{id}', [MenuController::class, 'show']);
@@ -94,7 +98,7 @@ Route::prefix('menu')->group(function(){
 /* Order */
 
 Route::prefix('order')->group(function(){
-    Route::get('index', [OrderController::class, 'index']);
+    Route::post('index/{limit}/{page?}', [OrderController::class, 'index']);
     Route::get('show/{id}', [OrderController::class, 'show']);
     Route::post('store', [OrderController::class, 'store']);
     Route::post('update/{id}', [OrderController::class, 'update']);
@@ -107,6 +111,7 @@ Route::prefix('order')->group(function(){
 
 Route::prefix('post')->group(function(){
     Route::get('index', [PostController::class, 'index']);
+    
     Route::get('post_list1/{limit}/{type}', [PostController::class, 'post_list1']);
     Route::get('post_detail/{slug}', [PostController::class, 'post_detail']);
     Route::get('getByStatus/{status}', [PostController::class, 'getByStatus']);
@@ -125,10 +130,10 @@ Route::prefix('post')->group(function(){
 /* Product */
 
 Route::prefix('product')->group(function(){
-    Route::get('index', [ProductController::class, 'index']);
+    Route::get('index/{status}/{limit}/{page?}', [ProductController::class, 'index']);
     Route::post('store',[ProductController::class,'store']);
+    Route::get('test',[ProductController::class,'test']);
     Route::delete('destroy/{id}',[ProductController::class,'destroy']);
-    Route::post('TrashOrRestore/{id}/{tor}',[ProductController::class,'TrashOrRestore']);
     Route::post('update/{id}', [ProductController::class, 'update']);
     Route::get('show/{id}', [ProductController::class, 'show']);
 });
@@ -137,7 +142,8 @@ Route::prefix('product')->group(function(){
 /* Slider */
 
 Route::prefix('slider')->group(function(){
-    Route::get('index', [SliderController::class, 'index']);
+    Route::get('index/{limit}/{page?}', [SliderController::class, 'index']);
+    Route::get('getSliderByPosition/{position}/{status?}', [SliderController::class, 'getSliderByPosition']);
     Route::get('show/{id}', [SliderController::class, 'show']);
     Route::post('store', [SliderController::class, 'store']);
     Route::post('update/{id}', [SliderController::class, 'update']);
@@ -152,6 +158,7 @@ Route::prefix('user')->group(function(){
     Route::get('index/{roles}', [UserController::class, 'index']);
     Route::get('show/{id}', [UserController::class, 'show']);
     Route::post('store', [UserController::class, 'store']);
+    Route::post('login', [UserController::class, 'login']);
     Route::post('update/{id}', [UserController::class, 'update']);
     Route::delete('destroy/{id}', [UserController::class, 'destroy']);
 
@@ -174,7 +181,12 @@ Route::prefix('wishlist')->group(function(){
 Route::get('product_category/{category_id}/{limit}/{page?}', [ProductController::class, 'product_category']);
 Route::get('product_brand/{brand_id}/{limit}/{page?}', [ProductController::class, 'product_brand']);
 Route::get('getLatestProduct/{limit}/{status?}', [ProductController::class, 'getLatestProduct']);
+Route::get('getProducts/{limit}', [ProductController::class, 'getProducts']);
+
 
 /*---------------------*/
 /* Slider */
 Route::get('getSliderByPosition/{position}/{status?}', [SliderController::class, 'getSliderByPosition']);
+
+/*------------------- */
+Route::get('getMenus',[MenuController::class,'getMenus']);

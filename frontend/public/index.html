@@ -123,23 +123,5 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script>
-      $(document).ready(function () {
-        $('button[data-collapse-toggle="dropdown-example"]').click(function () {
-          $("#dropdown-example").toggle();
-        });
-      });
-      $(document).ready(function () {
-        $('button[data-drawer-toggle="separator-sidebar"]').click(function () {
-          $("aside").toggleClass("-tw-translate-x-full");
-          $(".overlay").toggle();
-        });
-
-        $(".overlay").click(function () {
-          $("aside").toggleClass("-tw-translate-x-full");
-          $(".overlay").toggle();
-        });
-      });
-    </script>
   </body>
 </html>

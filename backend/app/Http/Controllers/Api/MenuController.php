@@ -8,9 +8,29 @@ use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
-    public function index()
+    public function index($limit, $page = 1)
     {
+        $offset = ($page - 1) * $limit;
+        $total_data = Menu::all();
+        $data = Menu::with('parent')->offset($offset)
+            ->limit($limit)->get();
+        return response()->json(
+            ['success' => true, 'message' => 'Tải dữ liệu thành công', 'data' => $data, 'total_data' => $total_data],
+            200
+        );
+    }
+    public function all(){
         $data = Menu::all();
+        return response()->json(
+            ['success' => true, 'message' => 'Tải dữ liệu thành công', 'data' => $data],
+            200
+        );
+    }
+    public function getMenus(){
+        $args = [['status','=',1]];
+        $data = Menu::with('children')->where($args)->get();
+        
+
         return response()->json(
             ['success' => true, 'message' => 'Tải dữ liệu thành công', 'data' => $data],
             200
@@ -18,9 +38,10 @@ class MenuController extends Controller
     }
     public function show($id)
     {
-        $data = Menu::find($id);
+        $menu = Menu::find($id);
+        $parent = $menu->parent;
         return response()->json(
-            ['success' => true, 'message' => 'Tải dữ liệu thành công', 'data' => $data],
+            ['success' => true, 'message' => 'Tải dữ liệu thành công', 'data' => $menu, 'parent' => $parent],
             200
         );
     }
@@ -62,13 +83,18 @@ class MenuController extends Controller
         $menu->created_at = date('Y-m-d H:i:s');
         $menu->created_by = $request->user_id;
         $menu->status = $request->status; //form
-        if ($request->parent_id !== 0) {
+        if ($request->parent_id != 0) {
             $menu_parent = Menu::find($request->parent_id);
             $menu_parent->children()->save($menu);
         }
         $menu->save(); //Luuu vao CSDL
+        $menu_1 = Menu::all();
+        $menu_count = count($menu_1);
+        $page = ceil($menu_count/5);
+        
+
         return response()->json(
-            ['success' => true, 'message' => 'Thành công', 'data' => $menu],
+            ['success' => true, 'message' => 'Thành công', 'data' => $menu, 'latest' => $page],
             201
         );
     }
@@ -80,7 +106,7 @@ class MenuController extends Controller
         $menu->updated_at = date('Y-m-d H:i:s');
         $menu->updated_by = $request->user_id;
         $menu->status = $request->status; //form
-        if ($request->parent_id !== 0) {
+        if ($request->parent_id != 0) {
             $menu_parent = Menu::find($request->parent_id);
             $menu_parent->children()->save($menu);
         } else {

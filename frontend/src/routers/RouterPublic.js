@@ -8,6 +8,7 @@ import CategoryGridView from "../pages/frontend/category/CategoryGridView";
 import Account from "../pages/frontend/profile";
 import Search from "../pages/frontend/product/ProductSearch";
 import Contact from "../pages/frontend/contact";
+
 const RouterPublic = [
   { path: "/", component: Home },
   { path: "/products/:slug", component: Detail },

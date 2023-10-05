@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
@@ -8,14 +9,26 @@ use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
-    public function index()
+    public function index($status, $limit, $page = 1)
     {
+        $args = [["status", "=", $status]];
+        $offset = ($page - 1) * $limit;
+        $total_data = Brand::where($args)->get();
+        $data = Brand::where($args)->offset($offset)
+            ->limit($limit)->get();
+        return response()->json(
+            ['success' => true, 'message' => 'Tải dữ liệu thành công', 'data' => $data, 'total_data' => $total_data],
+            200
+        );
+    }
+    public function getAll(){
         $data = Brand::all();
         return response()->json(
             ['success' => true, 'message' => 'Tải dữ liệu thành công', 'data' => $data],
             200
         );
     }
+
     public function show($id)
     {
         $brand = Brand::find($id);
@@ -31,14 +44,14 @@ class BrandController extends Controller
         $brand->slug = Str::of($request->name)->slug('-');
         // $brand->image = $request->name;
         $files = $request->image;
-        if($files != null){
+        if ($files != null) {
             $extension = $files->getClientOriginalExtension();
-            if(in_array($extension, ['jpg','png','gif','webp','jpeg','svg'])){
+            if (in_array($extension, ['jpg', 'png', 'gif', 'webp', 'jpeg', 'svg'])) {
                 $filename = $brand->slug . '.' . $extension;
                 $brand->image = $filename;
-                $files->move(public_path('images/brand'),$filename);
+                $files->move(public_path('images/brand'), $filename);
             }
-        } 
+        }
         $brand->metakey = $request->metakey; //form
         $brand->metadesc = $request->metadesc; //form
         $brand->created_at = date('Y-m-d H:i:s');
@@ -57,19 +70,18 @@ class BrandController extends Controller
         $brand->slug = Str::of($request->name)->slug('-');
         // $brand->image = $request->name;
         $files = $request->image;
-        if($files != null){
-            if(is_file(public_path('images/brand/'.$brand->image)))
-            {
+        if ($files != null) {
+            if (is_file(public_path('images/brand/' . $brand->image))) {
 
-                unlink(public_path('images/brand/'.$brand->image));
+                unlink(public_path('images/brand/' . $brand->image));
             }
             $extension = $files->getClientOriginalExtension();
-            if(in_array($extension, ['jpg','png','gif','webp','jpeg','svg'])){
+            if (in_array($extension, ['jpg', 'png', 'gif', 'webp', 'jpeg', 'svg'])) {
                 $filename = $brand->slug . '.' . $extension;
                 $brand->image = $filename;
-                $files->move(public_path('images/brand'),$filename);
+                $files->move(public_path('images/brand'), $filename);
             }
-        } 
+        }
         $brand->metakey = $request->metakey; //form
         $brand->metadesc = $request->metadesc; //form
         $brand->updated_at = date('Y-m-d H:i:s');
@@ -83,17 +95,33 @@ class BrandController extends Controller
     }
     public function destroy($id)
     {
-        $brand=Brand::find($id);
-        if($brand==null){
+        $brand = Brand::find($id);
+        if ($brand == null) {
             return response()->json(
                 ['success' => false, 'message' => 'Xóa dữ liệu không thành công', 'data' => null],
                 404
             );
         }
-        $brand->delete();
+        if ($brand->status == 0) {
+            $product = $brand->product;
+            if (count($product) > 0)
+                return response()->json(
+                    ['success' => false, 'message' => 'Không thành công! Dữ liệu này đang được sử dụng.', 'data' => null],
+                    200
+                );
+            if (is_file(public_path('images/brand/' . $brand->image))) {
+
+                unlink(public_path('images/brand/' . $brand->image));
+            }
+            $brand->delete();
+        } else {
+            $brand->status = 0;
+            $brand->save();
+        }
+
         return response()->json(
             ['success' => true, 'message' => 'Thành công', 'data' => $brand],
             200
         );
-}
+    }
 }

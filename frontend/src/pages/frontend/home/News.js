@@ -9,11 +9,11 @@ function News() {
         </header>
         <div className="row">
           <div className="col-md-3 col-sm-6 padding-bottom">
-            <article className="card card-post">
+            <article className="card card-post rounded-lg border">
               <Link to="#">
                 <img
                   src={require("../../../assets/images/posts/1.jpg")}
-                  className="card-img-top"
+                  className="card-img-top rounded-top"
                   alt=""
                 />
               </Link>
@@ -29,11 +29,11 @@ function News() {
             {/* card.// */}
           </div>{" "}
           <div className="col-md-3 col-sm-6 padding-bottom">
-            <article className="card card-post">
+            <article className="card card-post rounded-lg border">
               <Link to="#">
                 <img
                   src={require("../../../assets/images/posts/1.jpg")}
-                  className="card-img-top"
+                  className="card-img-top rounded-top"
                   alt=""
                 />
               </Link>
@@ -50,11 +50,11 @@ function News() {
           </div>
           {/* col.// */}
           <div className="col-md-3 col-sm-6">
-            <article className="card card-post">
+            <article className="card card-post rounded-lg border">
               <Link to="#">
                 <img
                   src={require("../../../assets/images/posts/2.jpg")}
-                  className="card-img-top"
+                  className="card-img-top rounded-top"
                   alt=""
                 />
               </Link>
@@ -71,11 +71,11 @@ function News() {
           </div>{" "}
           {/* col.// */}
           <div className="col-md-3 col-sm-6">
-            <article className="card card-post">
+            <article className="card card-post rounded-lg border">
               <Link to="#">
                 <img
                   src={require("../../../assets/images/posts/3.jpg")}
-                  className="card-img-top"
+                  className="card-img-top rounded-top"
                   alt=""
                 />
               </Link>
@@ -92,11 +92,11 @@ function News() {
           </div>{" "}
           {/* col.// */}
           <div className="col-md-3 col-sm-6">
-            <article className="card card-post">
+            <article className="card card-post rounded-lg border">
               <Link to="#">
                 <img
                   src={require("../../../assets/images/posts/4.jpg")}
-                  className="card-img-top"
+                  className="card-img-top rounded-top"
                   alt=""
                 />
               </Link>

@@ -10,22 +10,28 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function index(Request $request, $limit, $page=1)
     {
-        $data = Order::all();
+        $offset = ($page - 1) * $limit;
+        $args = [['status','=',$request->status]];
+    
+        $total_data = Order::where($args)->get();
+        $data = Order::where($args)->offset($offset)
+            ->limit($limit)->get();
         return response()->json(
-            ['success' => true, 'message' => 'Tải dữ liệu thành công', 'data' => $data],
+            ['success' => true, 'message' => 'Tải dữ liệu thành công', 'data' => $data, 'total_data' => $total_data],
             200
         );
     }
     function show($id){
-        $data = Order::find($id);
-        $data_detail = $data->orderdetail;
+        $data = Order::with('orderdetail','orderdetail.product')->find($id);
+     
+        
         return response()->json([
             'success' => true,
             'message' => 'thành công',
             'data' => $data,
-            'data_detail' => $data_detail
+        
         ],
         200);
     }
@@ -58,7 +64,7 @@ class OrderController extends Controller
         }
         
         return response()->json(
-            ['success' => true, 'message' => 'Thành công', 'order' => $order],
+            ['success' => true, 'message' => 'Thành công', 'data' => $order],
             201
         );
     }
@@ -67,13 +73,12 @@ class OrderController extends Controller
         $order=Order::find($id+0);
         if($order==null){
             return response()->json(
-                ['success' => false, 'message' => 'Xóa dữ liệu không thành công', 'data' => null],
+                ['success' => false, 'message' => 'Không thành công', 'data' => null],
                 404
             );
         }
-        $args = [['order_id','=', $id]];
-        OrderDetail::where($args)->delete();
-        $order->delete();
+        $order->status = 0;
+        $order->save();
         return response()->json(
             ['success' => true, 'message' => 'Thành công', 'data' => $order],
             200

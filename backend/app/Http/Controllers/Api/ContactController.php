@@ -8,11 +8,14 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    public function index()
+    public function index($limit, $page=1)
     {
-        $data = Contact::all();
+        $offset = ($page - 1) * $limit;
+        $total_data = Contact::all();
+        $data = Contact::offset($offset)
+            ->limit($limit)->get();
         return response()->json(
-            ['success' => true, 'message' => 'Tải dữ liệu thành công', 'data' => $data],
+            ['success' => true, 'message' => 'Tải dữ liệu thành công', 'data' => $data, 'total_data' => $total_data],
             200
         );
     }
