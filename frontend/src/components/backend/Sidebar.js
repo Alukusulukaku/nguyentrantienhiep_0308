@@ -7,7 +7,6 @@ function Sidebar(props) {
   const { setToken } = useAuth();
   const [isActive, setIsActive] = useState({ key: "", status: false });
 
-  const pathname = window.location.pathname.split("/")[2];
   const handleChange = () => {
     props.setShow(!props.show);
   };
@@ -152,25 +151,7 @@ function Sidebar(props) {
                 </span>
               </Link>
             </li>
-            <li>
-              <Link
-                to="/admin/post"
-                className="tw-flex tw-items-center tw-transition-all tw-duration-300 tw-p-2 tw-text-gray-900 tw-rounded-lg light:tw-text-white hover:tw-bg-gray-100 light:hover:tw-bg-gray-700 tw-group"
-              >
-                <svg
-                  className="tw-flex-shrink-0 tw-w-5 tw-h-5 tw-text-gray-500 tw-transition tw-duration-75 light:tw-text-gray-400 group-hover:tw-text-gray-900 light:group-hover:tw-text-white"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="m13.835 7.578-.005.007-7.137 7.137 2.139 2.138 7.143-7.142-2.14-2.14Zm-10.696 3.59 2.139 2.14 7.138-7.137.007-.005-2.141-2.141-7.143 7.143Zm1.433 4.261L2 12.852.051 18.684a1 1 0 0 0 1.265 1.264L7.147 18l-2.575-2.571Zm14.249-14.25a4.03 4.03 0 0 0-5.693 0L11.7 2.611 17.389 8.3l1.432-1.432a4.029 4.029 0 0 0 0-5.689Z" />
-                </svg>
-                <span className="tw-flex-1 tw-ml-3 tw-whitespace-nowrap">
-                  Post
-                </span>
-              </Link>
-            </li>
+
             <li>
               <Link
                 to="/admin/contact/1"
@@ -190,6 +171,69 @@ function Sidebar(props) {
                   Contact
                 </span>
               </Link>
+            </li>
+            <li>
+              <button
+                type="button"
+                className={`tw-flex tw-items-center tw-w-full tw-p-2 tw-text-base ${
+                  isActive.status && isActive.key === "news"
+                    ? "tw-bg-gray-100"
+                    : "tw-bg-white"
+                } tw-text-gray-900 tw-transition tw-duration-75 tw-rounded-lg tw-group hover:tw-bg-gray-100 light:tw-text-white light:hover:tw-bg-gray-700`}
+                onClick={() => handleToggle("news")}
+              >
+                <svg
+                  className="tw-flex-shrink-0 tw-w-5 tw-h-5 tw-text-gray-500 tw-transition tw-duration-75 light:tw-text-gray-400 group-hover:tw-text-gray-900 light:group-hover:tw-text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="m13.835 7.578-.005.007-7.137 7.137 2.139 2.138 7.143-7.142-2.14-2.14Zm-10.696 3.59 2.139 2.14 7.138-7.137.007-.005-2.141-2.141-7.143 7.143Zm1.433 4.261L2 12.852.051 18.684a1 1 0 0 0 1.265 1.264L7.147 18l-2.575-2.571Zm14.249-14.25a4.03 4.03 0 0 0-5.693 0L11.7 2.611 17.389 8.3l1.432-1.432a4.029 4.029 0 0 0 0-5.689Z" />
+                </svg>
+                <span className="tw-flex-1 tw-ml-3 tw-text-left tw-whitespace-nowrap">
+                  News
+                </span>
+                <svg
+                  className="tw-w-3 tw-h-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 10 6"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="m1 1 4 4 4-4"
+                  />
+                </svg>
+              </button>
+              <nav
+                className={`${
+                  isActive.key === "news" ? "tw-block" : "tw-hidden"
+                } tw-py-2 tw-space-y-2`}
+              >
+                <ul className="tw-py-2 tw-space-y-2">
+                  <li>
+                    <Link
+                      to="/admin/topic/1"
+                      className="tw-flex tw-transition-all tw-duration-300 tw-items-center tw-w-full tw-p-2 tw-text-gray-900 tw-transition tw-duration-75 tw-rounded-lg tw-pl-11 tw-group hover:tw-bg-gray-100 light:tw-text-white light:hover:tw-bg-gray-700"
+                    >
+                      Topic
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/admin/post/1"
+                      className="tw-flex tw-transition-all tw-duration-300 tw-items-center tw-w-full tw-p-2 tw-text-gray-900 tw-transition tw-duration-75 tw-rounded-lg tw-pl-11 tw-group hover:tw-bg-gray-100 light:tw-text-white light:hover:tw-bg-gray-700"
+                    >
+                      Post
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
             </li>
             <li>
               <button
@@ -251,12 +295,75 @@ function Sidebar(props) {
                       Brands
                     </Link>
                   </li>
+                </ul>
+              </nav>
+            </li>
+            <li>
+              <button
+                type="button"
+                className={`tw-flex tw-items-center tw-w-full tw-p-2 tw-text-base ${
+                  isActive.status && isActive.key === "product"
+                    ? "tw-bg-gray-100"
+                    : "tw-bg-white"
+                } tw-text-gray-900 tw-transition tw-duration-75 tw-rounded-lg tw-group hover:tw-bg-gray-100 light:tw-text-white light:hover:tw-bg-gray-700`}
+                onClick={() => handleToggle("product")}
+              >
+                <svg
+                  class="tw-flex-shrink-0 tw-w-5 tw-h-5 tw-text-gray-500 tw-transition tw-duration-75 light:tw-text-gray-400 group-hover:tw-text-gray-900 light:group-hover:tw-text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 16"
+                >
+                  <path d="M19.9 6.58c0-.009 0-.019-.006-.027l-2-4A1 1 0 0 0 17 2h-4a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v9a1 1 0 0 0 1 1h.3c-.03.165-.047.332-.051.5a3.25 3.25 0 1 0 6.5 0A3.173 3.173 0 0 0 7.7 12h4.6c-.03.165-.047.332-.051.5a3.25 3.25 0 1 0 6.5 0 3.177 3.177 0 0 0-.049-.5h.3a1 1 0 0 0 1-1V7a.99.99 0 0 0-.1-.42ZM16.382 4l1 2H13V4h3.382ZM4.5 13.75a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5Zm11 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5Z" />
+                </svg>
+                <span className="tw-flex-1 tw-ml-3 tw-text-left tw-whitespace-nowrap">
+                  Stocks
+                </span>
+                <svg
+                  className="tw-w-3 tw-h-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 10 6"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="m1 1 4 4 4-4"
+                  />
+                </svg>
+              </button>
+              <nav
+                className={`${
+                  isActive.key === "product" ? "tw-block" : "tw-hidden"
+                } tw-py-2 tw-space-y-2`}
+              >
+                <ul className="tw-py-2 tw-space-y-2">
                   <li>
                     <Link
                       to="/admin/product/1"
                       className="tw-flex tw-transition-all tw-duration-300 tw-items-center tw-w-full tw-p-2 tw-text-gray-900 tw-transition tw-duration-75 tw-rounded-lg tw-pl-11 tw-group hover:tw-bg-gray-100 light:tw-text-white light:hover:tw-bg-gray-700"
                     >
-                      Products
+                      Product
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/admin/product/sale"
+                      className="tw-flex tw-transition-all tw-duration-300 tw-items-center tw-w-full tw-p-2 tw-text-gray-900 tw-transition tw-duration-75 tw-rounded-lg tw-pl-11 tw-group hover:tw-bg-gray-100 light:tw-text-white light:hover:tw-bg-gray-700"
+                    >
+                      Add sale
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/admin/brand/1"
+                      className="tw-flex tw-transition-all tw-duration-300 tw-items-center tw-w-full tw-p-2 tw-text-gray-900 tw-transition tw-duration-75 tw-rounded-lg tw-pl-11 tw-group hover:tw-bg-gray-100 light:tw-text-white light:hover:tw-bg-gray-700"
+                    >
+                      Add stock
                     </Link>
                   </li>
                 </ul>

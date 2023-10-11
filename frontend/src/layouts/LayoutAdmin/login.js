@@ -109,48 +109,42 @@ function Login() {
                 target="_blank"
                 className="tw-mb-2 tw-mr-4 tw-text-slate-400 sm:tw-mb-0 xl:tw-mr-12"
               >
-                {" "}
-                Company{" "}
+                Company
               </Link>
               <Link
                 to="#"
                 target="_blank"
                 className="tw-mb-2 tw-mr-4 tw-text-slate-400 sm:tw-mb-0 xl:tw-mr-12"
               >
-                {" "}
-                About Us{" "}
+                About Us
               </Link>
               <Link
                 to="#"
                 target="_blank"
                 className="tw-mb-2 tw-mr-4 tw-text-slate-400 sm:tw-mb-0 xl:tw-mr-12"
               >
-                {" "}
-                Team{" "}
+                Team
               </Link>
               <Link
                 to="#"
                 target="_blank"
                 className="tw-mb-2 tw-mr-4 tw-text-slate-400 sm:tw-mb-0 xl:tw-mr-12"
               >
-                {" "}
-                Products{" "}
+                Products
               </Link>
               <Link
                 to="#"
                 target="_blank"
                 className="tw-mb-2 tw-mr-4 tw-text-slate-400 sm:tw-mb-0 xl:tw-mr-12"
               >
-                {" "}
-                Blog{" "}
+                Blog
               </Link>
               <Link
                 to="#"
                 target="_blank"
                 className="tw-mb-2 tw-mr-4 tw-text-slate-400 sm:tw-mb-0 xl:tw-mr-12"
               >
-                {" "}
-                Pricing{" "}
+                Pricing
               </Link>
             </div>
             <div className="tw-flex-shrink-0 tw-w-full tw-max-w-full tw-mx-auto tw-mt-2 tw-mb-6 tw-text-center lg:tw-flex-0 lg:tw-w-8/12">

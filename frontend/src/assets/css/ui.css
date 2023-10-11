@@ -1143,7 +1143,6 @@ a[class*="card"]:hover .title {
 }
 .card-category .img-wrap img {
   height: 100%;
-  width: 60%;
   -o-object-fit: cover;
   object-fit: cover;
   mix-blend-mode: multiply;

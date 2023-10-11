@@ -19,6 +19,7 @@ import OrderDetail from "../pages/backend/order/OrderDetail";
 import Post from "../pages/backend/post";
 import PostNew from "../pages/backend/post/PostNew";
 import Product from "../pages/backend/product";
+import AddSale from "../pages/backend/product/AddSale";
 import ProductDetail from "../pages/backend/product/ProductDetail";
 import ProductNew from "../pages/backend/product/ProductNew";
 import Slider from "../pages/backend/slider";
@@ -66,6 +67,7 @@ const RouterPrivate = [
   { path: "/admin/product/:page", component: Product },
   { path: "/admin/product/new", component: ProductNew },
   { path: "/admin/product/detail/:id", component: ProductDetail },
+  { path: "/admin/product/sale", component: AddSale },
 
   /* Slider */
   { path: "/admin/slider/:page", component: Slider },

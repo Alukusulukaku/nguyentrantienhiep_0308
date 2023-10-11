@@ -179,18 +179,18 @@ function Home() {
       </div>
       <div className="tw-flex tw-flex-col tw-items-center tw-mt-5">
         <span className="tw-text-sm tw-text-gray-700 light:tw-text-gray-400">
-          Showing{" "}
+          Showing
           <span className="tw-font-semibold tw-text-gray-900 light:tw-text-white">
             1
-          </span>{" "}
-          to{" "}
+          </span>
+          to
           <span className="tw-font-semibold tw-text-gray-900 light:tw-text-white">
             10
-          </span>{" "}
-          of{" "}
+          </span>
+          of
           <span className="tw-font-semibold tw-text-gray-900 light:tw-text-white">
             100
-          </span>{" "}
+          </span>
           Entries
         </span>
         <div className="tw-flex tw-mt-2 tw-space-x-2 xs:tw-mt-0">

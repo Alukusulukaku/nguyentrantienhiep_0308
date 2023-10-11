@@ -31,7 +31,7 @@ function Alert() {
   const failed = () => {
     return (
       <div
-        className="tw-flex tw-sticky tw-z-1000 tw-right-0 tw-left-0 tw-items-center tw-p-4 tw-mb-4 tw-text-sm tw-text-red-800 tw-rounded-lg tw-bg-red-50 dark:tw-bg-gray-800 dark:tw-text-red-400"
+        className="tw-flex tw-shadow-md tw-fixed tw-translate-x-1/2 tw-z-99 tw-w-6/12 tw-right-0 tw-left-0 tw-top-1000 tw-items-center tw-p-4 tw-mb-4 tw-text-sm tw-text-red-800 tw-rounded-lg tw-bg-red-50 dark:tw-bg-gray-800 dark:tw-text-red-400"
         role="alert"
       >
         <svg
@@ -45,7 +45,7 @@ function Alert() {
         </svg>
         <span className="tw-sr-only">Info</span>
         <div>
-          <span className="tw-font-medium">Danger!</span>
+          <span className="tw-font-medium">Danger! </span>
           {alert.text}
         </div>
       </div>

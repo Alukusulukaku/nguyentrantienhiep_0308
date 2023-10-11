@@ -99,7 +99,7 @@
   font-weight: bold;
 }
 .slider-image {
-  filter: brightness(85%);
+  filter: brightness(95%);
 }
 .slider-home-banner {
   overflow-x: hidden;
@@ -110,9 +110,7 @@
 .card-post {
   transition: transform 0.2s;
 }
-.img-show img:nth-child(1) {
-  position: absolute;
-}
+
 .img-show img {
   transition: 0.4s;
 }

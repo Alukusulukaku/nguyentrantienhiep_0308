@@ -26,4 +26,10 @@ class Product extends Model
     public function category():BelongsTo{
         return $this->belongsTo(Category::class);
     }
+    public function productsale(): HasMany{
+        return $this->hasMany(ProductSale::class);
+    }
+    public function productstore(): HasMany{
+        return $this->hasMany(ProductStore::class);
+    }
 }

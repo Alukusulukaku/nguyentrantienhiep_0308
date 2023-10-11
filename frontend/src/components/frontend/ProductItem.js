@@ -7,8 +7,11 @@ function ProductItem(props) {
     <div className="col-xl-2 col-lg-3 col-md-4 col-6 ">
       <div className="card card-sm card-product-grid rounded-2xl">
         <div className="product-grid">
-          <div className="product-image">
-            <Link href="#" className="image">
+          <div className="product-image image-container">
+            <Link
+              to={`/san-pham/${props.product.category.slug}/${props.product.slug}`}
+              className="image"
+            >
               <img
                 className="img-1"
                 src={`${urlImage}product/${props.product.image}`}
@@ -22,18 +25,17 @@ function ProductItem(props) {
             </Link>
             <ul className="product-links">
               <li>
-                <Link href="#">
+                <Link to="#">
                   <i className="fa fa-heart" />
                 </Link>
               </li>
-
               <li>
-                <Link href="#">
+                <Link to="#">
                   <i className="fa fa-shopping-cart" />
                 </Link>
               </li>
             </ul>
-            <Link href="#" className="product-view">
+            <Link to="#" className="product-view">
               <i className="fa fa-search" />
             </Link>
           </div>
@@ -42,7 +44,11 @@ function ProductItem(props) {
               {props.product.brand.name}
             </small>
             <h3 className="title pt-2 pb-2" style={{ fontWeight: "bold" }}>
-              <Link href="#">Women's Blouse Topbghdrgjnkhdghijndghijndjni</Link>
+              <Link
+                to={`/san-pham/${props.product.category.slug}/${props.product.slug}`}
+              >
+                {props.product.name}
+              </Link>
             </h3>
             <div className="row m-2">
               <div className="col tw-text-lg" style={{ color: "black" }}>

@@ -298,39 +298,20 @@ function ProductDetail() {
             />
           </div>
         </div>
-        <div className="tw-grid tw-gap-6 tw-mb-6 md:tw-grid-cols-2">
-          <div>
-            <label
-              htmlFor="meta_key"
-              className="block mb-2 text-sm font-medium text-gray-900 light:text-white"
-            >
-              Price
-            </label>
-            <div className="tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-p-2.5 light:tw-bg-gray-700 light:tw-border-gray-600 light:tw-placeholder-gray-400 light:tw-text-white light:focus:tw-ring-blue-500 light:focus:tw-border-blue-500">
-              <NumericFormat
-                value={product.price}
-                displayType={"text"}
-                thousandSeparator={true}
-                decimalScale={0}
-                prefix={"$"}
-              />
-            </div>
-          </div>
-          <div>
-            <label
-              htmlFor="meta_desc"
-              className="block mb-2 text-sm font-medium text-gray-900 light:text-white"
-            >
-              Quantity
-            </label>
-            <input
-              type="text"
-              value={product.qty}
-              id="meta_desc"
-              className="tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-p-2.5 light:tw-bg-gray-700 light:tw-border-gray-600 light:tw-placeholder-gray-400 light:tw-text-white light:focus:tw-ring-blue-500 light:focus:tw-border-blue-500"
-              placeholder="Enter meta description..."
-              required
-              disabled
+        <div className="tw-mb-6">
+          <label
+            htmlFor="meta_key"
+            className="block mb-2 text-sm font-medium text-gray-900 light:text-white"
+          >
+            Price
+          </label>
+          <div className="tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-p-2.5 light:tw-bg-gray-700 light:tw-border-gray-600 light:tw-placeholder-gray-400 light:tw-text-white light:focus:tw-ring-blue-500 light:focus:tw-border-blue-500">
+            <NumericFormat
+              value={product.price}
+              displayType={"text"}
+              thousandSeparator={true}
+              decimalScale={0}
+              prefix={"$"}
             />
           </div>
         </div>

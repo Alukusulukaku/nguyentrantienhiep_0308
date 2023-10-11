@@ -20,9 +20,21 @@ class CategoryController extends Controller
             200
         );
     }
-    public function getAll()
+    public function getAll($status=3)
     {
-        $data = Category::all();
+        if($status == 3){
+            $data = Category::with('product')->get();
+        }else{
+            $data = Category::with('product')->where([['status','=',$status]])->orderBy('name')->get();
+        }
+        return response()->json(
+            ['success' => true, 'message' => 'Tải dữ liệu thành công', 'data' => $data],
+            200
+        );
+    }
+    public function getAllWithChildren()
+    {
+        $data = Category::with('children')->get();
         return response()->json(
             ['success' => true, 'message' => 'Tải dữ liệu thành công', 'data' => $data],
             200
@@ -39,10 +51,11 @@ class CategoryController extends Controller
     }
     public function getBySlug($slug)
     {
-        $args = [['slug', '=', $slug]];
-        $category = Category::where($args)->get();
+        $args = [['slug', '=', $slug],['status','=',1]];
+        $category = Category::where($args)->first();
+        $children = $category->children;
         return response()->json(
-            $category,
+            ['success' => true, 'message' => 'Tải dữ liệu thành công', 'data' => $children],
             200
         );
     }
@@ -51,6 +64,15 @@ class CategoryController extends Controller
         $category = new Category();
         $category->name = $request->name; //form
         $category->slug = Str::of($request->name)->slug('-');
+        $files = $request->image;
+        if ($files != null) {
+            $extension = $files->getClientOriginalExtension();
+            if (in_array($extension, ['jpg', 'png', 'gif', 'webp', 'jpeg', 'svg'])) {
+                $filename = $category->slug . '.' . $extension;
+                $category->image = $filename;
+                $files->move(public_path('images/category'), $filename);
+            }
+        }
         $category->metakey = $request->metakey; //form
         $category->metadesc = $request->metadesc; //form
         $category->created_at = date('Y-m-d H:i:s');
@@ -79,6 +101,15 @@ class CategoryController extends Controller
         $category->updated_at = date('Y-m-d H:i:s');
         $category->updated_by = $request->user_id;
         $category->status = $request->status; //form
+        $files = $request->image;
+        if ($files != null) {
+            $extension = $files->getClientOriginalExtension();
+            if (in_array($extension, ['jpg', 'png', 'gif', 'webp', 'jpeg', 'svg'])) {
+                $filename = $category->slug . '.' . $extension;
+                $category->image = $filename;
+                $files->move(public_path('images/category'), $filename);
+            }
+        }
         if ($request->parent_id != 0) {
             $category_parent = Category::find($request->parent_id);
             $category_parent->children()->save($category);
@@ -99,7 +130,15 @@ class CategoryController extends Controller
             ['parent_id', '=', $parent_id],
             ['status', '=', $status]
         ];
-        $data = Category::where($args)->orderBy('sort_order', 'ASC')->get();
+        $data = Category::where($args)->get();
+        return response()->json(
+            ['success' => true, 'message' => 'Thành công', 'data' => $data],
+            200
+        );
+    }
+    public function categoryExceptById($id){
+      
+        $data = Category::whereNotIn('id',[$id])->orderBy('created_at','ASC')->get();
         return response()->json(
             ['success' => true, 'message' => 'Thành công', 'data' => $data],
             200

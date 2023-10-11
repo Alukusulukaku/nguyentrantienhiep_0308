@@ -26,7 +26,7 @@ function CategoryEdit() {
         async function fetchItems() {
           const record = await categoryservice.getById(id);
           setCategory(record.data.data);
-          const record1 = await categoryservice.All();
+          const record1 = await categoryservice.getAllButNotId(id);
           setCategories(record1.data.data);
         }
         fetchItems();
@@ -51,11 +51,17 @@ function CategoryEdit() {
 
   async function categoryUpdate(event) {
     event.preventDefault();
+    const image = document.querySelector("#image");
     var category = new FormData();
     category.append("name", name);
     category.append("metakey", metakey);
     category.append("metadesc", metadesc);
     category.append("parent_id", parent_id);
+    if (image.files.length === 0) {
+      category.append("image", "");
+    } else {
+      category.append("image", image.files[0]);
+    }
     category.append("user_id", 1);
     category.append("status", status);
 
@@ -93,6 +99,23 @@ function CategoryEdit() {
               required
             />
           </div>
+        </div>
+        <div className="tw-mb-6">
+          <label className="tw-block tw-mb-2 tw-text-sm tw-font-medium tw-text-gray-900 light:tw-text-white">
+            Category image
+          </label>
+          <input
+            className="tw-block tw-w-full tw-text-sm tw-text-gray-900 tw-border tw-border-gray-300 tw-rounded-lg tw-cursor-pointer tw-bg-gray-50 light:tw-text-gray-400 focus:tw-outline-none light:tw-bg-gray-700 light:tw-border-gray-600 light:tw-placeholder-gray-400"
+            aria-describedby="file_input_help"
+            id="image"
+            type="file"
+          />
+          <p
+            className="tw-mt-1 tw-text-sm tw-text-gray-500 light:tw-text-gray-300"
+            id="file_input_help"
+          >
+            SVG, PNG, JPG or GIF (MAX. 800x400px).
+          </p>
         </div>
         <div className="tw-mb-6">
           <>

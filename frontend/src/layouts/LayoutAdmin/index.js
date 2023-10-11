@@ -31,7 +31,6 @@ function LayoutAdmin() {
         <Alert />
         <DeleteConfirmModal />
         <Outlet />
-
         <Footer />
       </div>
     </>

@@ -14,7 +14,6 @@ function ProductNew() {
   const [metadesc, setMetadesc] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
-  const [qty, setQty] = useState(0);
   const [category, setCategory] = useState(0);
   const [brand, setBrand] = useState(0);
   const [status, setStatus] = useState(2);
@@ -54,7 +53,6 @@ function ProductNew() {
     product.append("metadesc", metadesc);
     product.append("status", status);
     product.append("price", price);
-    product.append("qty", qty);
     product.append("description", description);
     product.append("status", status);
     product.append("category_id", category);
@@ -74,15 +72,21 @@ function ProductNew() {
     if (images.length !== 0) {
       images.forEach((imagefile) => {
         product.append("images[]", imagefile);
-        console.log(imagefile);
       });
     }
     await productservice.create(product).then(function (res) {
       navigate("/admin/product/1");
-      setAlert({
-        text: "Created a record successfully!!",
-        type: "success",
-      });
+      if (res.data.success === true) {
+        setAlert({
+          text: res.data.message,
+          type: "success",
+        });
+      } else {
+        setAlert({
+          text: res.data.message,
+          type: "failed",
+        });
+      }
     });
   }
   return (
@@ -279,42 +283,24 @@ function ProductNew() {
           </div>
 
           <hr className="tw-w-48 tw-h-1 tw-mx-auto tw-my-4 tw-bg-gray-300 tw-border-0 tw-rounded md:tw-my-10 light:tw-bg-gray-700" />
-          <div className="tw-grid tw-gap-6 tw-mb-6 md:tw-grid-cols-2">
-            <div>
-              <label
-                htmlFor="meta_key"
-                className="block mb-2 text-sm font-medium text-gray-900 light:text-white"
-              >
-                Price
-              </label>
-              <input
-                type="text"
-                id="meta_key"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-                className="tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-p-2.5 light:tw-bg-gray-700 light:tw-border-gray-600 light:tw-placeholder-gray-400 light:tw-text-white light:focus:tw-ring-blue-500 light:focus:tw-border-blue-500"
-                placeholder="Enter meta key..."
-                required
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="meta_desc"
-                className="block mb-2 text-sm font-medium text-gray-900 light:text-white"
-              >
-                Quantity
-              </label>
-              <input
-                type="text"
-                value={qty}
-                onChange={(e) => setQty(e.target.value)}
-                id="meta_desc"
-                className="tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-p-2.5 light:tw-bg-gray-700 light:tw-border-gray-600 light:tw-placeholder-gray-400 light:tw-text-white light:focus:tw-ring-blue-500 light:focus:tw-border-blue-500"
-                placeholder="Enter meta description..."
-                required
-              />
-            </div>
+          <div className="tw-mb-6">
+            <label
+              htmlFor="meta_key"
+              className="block mb-2 text-sm font-medium text-gray-900 light:text-white"
+            >
+              Price
+            </label>
+            <input
+              type="text"
+              id="meta_key"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              className="tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-p-2.5 light:tw-bg-gray-700 light:tw-border-gray-600 light:tw-placeholder-gray-400 light:tw-text-white light:focus:tw-ring-blue-500 light:focus:tw-border-blue-500"
+              placeholder="Enter meta key..."
+              required
+            />
           </div>
+
           <div className="tw-grid tw-gap-6 tw-mb-6 md:tw-grid-cols-2">
             <div>
               <label
