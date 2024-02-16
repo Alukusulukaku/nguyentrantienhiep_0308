@@ -1,8 +1,6 @@
 ### PHIẾU ĐĂNG KÝ ĐỀ TÀI
 
 - Họ tên: Nguyễn Trần Tiến Hiệp
-- MSSV: 2121110308
-- Lớp: CCQ2111I
 - Đề tài: Cửa hàng bán ba lô và các đồ dùng cho việc du lịch và cắm trại
 - Công nghệ sử dụng: ReactJS, Laravel.
 
